@@ -4,6 +4,8 @@ let Schema = mongoose.Schema
 
 
 let audioSchema = new Schema({
+    description: {type:String},
+    title:{type:String},
     locationGcp : {type:String},
     comment : {type:String}    
 },{timestamps:true})
