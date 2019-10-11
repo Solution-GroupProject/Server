@@ -25,6 +25,15 @@ class AudioController {
         .catch(next)
     }
 
+    // {$push: {friends: {firstName: "Harry", lastName: "Potter"}}}
+    static pushComment(req,res,next){
+        Audio.updateOne({_id : req.body._id }, { $push : { comment: req.body.comment }})
+        .then( updatedData => {
+            res.status(201).json({updatedData})
+        })
+        .catch(next)
+    }
+
 }
 
 module.exports = AudioController
