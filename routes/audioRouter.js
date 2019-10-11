@@ -6,6 +6,7 @@ const multerHelp = require('../helpers/multerHelp')
 // router.post('/',AudioController.addAudio)
 router.post('/',  multerHelp.multer.single('audio'), multerHelp.sendUploadToGCS,AudioController.addAudio)
 router.get('/',AudioController.readAudio)
+router.patch('/', AudioController.pushComment)
 
 // router.post('/',  multerHelp.multer.single('audio'), multerHelp.sendUploadToGCS, (req,res) => {
 //     res.send({
