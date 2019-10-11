@@ -29,7 +29,9 @@ class AudioController {
     static pushComment(req,res,next){
         Audio.updateOne({_id : req.body._id }, { $push : { comment: req.body.comment }})
         .then( updatedData => {
-            res.status(201).json({updatedData})
+            console.log(updatedData);
+            
+            res.status(201).json({updatedData, addedComment: req.body.comment})
         })
         .catch(next)
     }
