@@ -6,7 +6,8 @@ const morgan = require('morgan')
 const express = require('express')
 const cors = require('cors')
 const mongoose = require('mongoose')
-// const routes = require('./routes')
+
+const routes = require('./routes')
 // const errorHandler = require('./middlewares/errorHandler')
 
 const app = express()
@@ -18,7 +19,8 @@ app.use(express.json())
 app.use(express.urlencoded({extended:false}))
 
 
-// app.use('/',routes)
+
+app.use('/',routes)
 mongoose.connect(process.env.URL_MONGOOSE,{useNewUrlParser: true,useUnifiedTopology: true,useCreateIndex: true })
 .then (_=>{
     console.log('mongoose succeessfully connect')
