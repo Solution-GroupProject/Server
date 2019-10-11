@@ -7,7 +7,8 @@ class AudioController {
             message: 'Your file is successfully uploaded',
             link: req.file.cloudStoragePublicUrl
         })
-        Audio.create({locationGcp:req.file.cloudStoragePublicUrl})
+        const {title,description} = req.body
+        Audio.create({locationGcp:req.file.cloudStoragePublicUrl,title,description})
         .then(data=>{
             console.log('berhasil');
             
@@ -15,7 +16,16 @@ class AudioController {
         })
         .catch(next)
     }
+    static readAudio(req,res,next){
+        Audio.find()
+        .then(article=>{
+            console.log(article);
+            res.status(200).json(article)
+        })
+        .catch(next)
+    }
 
 }
 
 module.exports = AudioController
+
